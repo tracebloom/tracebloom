@@ -41,6 +41,12 @@ These decisions are final for v1.0. Do not propose alternatives. If you believe 
 - CSS: token-driven. Reach for a value in `tokens.css` before writing a literal color or radius.
 - Tests required for every bug fix and every feature. 80% coverage floor once we have real code.
 
+## Documentation format conventions
+
+- All markdown tables use ASCII pipe-and-dash format: `|` (U+007C) and `-` (U+002D). Never Unicode box-drawing characters (`┌┬┐├┼┤└┴┘│─`). Even though box-drawing renders attractively in some terminals, it renders as literal characters on GitHub and breaks in most markdown tooling.
+- All code blocks are triple-backtick fenced with a language tag (```json, ```python, ```bash, etc.). Never indented blocks.
+- When a reviewer critiques a format issue, Claude Code MUST verify the critique against the actual artifact characters before fixing. If the critique doesn't match the artifact (e.g., reviewer claims box-drawing, artifact has ASCII pipes), push back with evidence rather than silently "fixing" a non-issue. Performing a fix that isn't needed teaches both sides worse habits.
+
 ## Commit convention
 
 Conventional Commits: `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `test:`, `perf:`, `ci:`. One logical change per commit. PR titles mirror commit subjects.
