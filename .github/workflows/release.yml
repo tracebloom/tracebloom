@@ -1,0 +1,52 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+# PyPI trusted publishing requires id-token: write.
+# First-time setup: configure at https://pypi.org/manage/account/publishing/
+# linking this repo + this workflow + the "pypi" environment.
+# See ROADMAP.md "Phase 2 blockers".
+
+jobs:
+  build-and-publish:
+    name: build and publish to PyPI
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/tracebloom
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Set up Python 3.10
+        run: uv python install 3.10
+
+      - name: Install pnpm deps
+        run: pnpm install --frozen-lockfile=false
+
+      - name: Build dashboard into SDK static/
+        run: bash scripts/build-wheel.sh
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: packages/tracebloom/dist

@@ -1,0 +1,38 @@
+# uv.lock is committed at workspace root for reproducible contributor dev environments.
+# Published packages (packages/tracebloom) use >= lower bounds, not exact pins,
+# so downstream users resolve against their own constraints.
+
+[tool.uv.workspace]
+members = ["packages/tracebloom"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["packages/dashboard"]
+
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle errors
+  "W",   # pycodestyle warnings
+  "F",   # pyflakes
+  "I",   # isort
+  "B",   # flake8-bugbear
+  "UP",  # pyupgrade
+  "N",   # pep8-naming
+  "SIM", # flake8-simplify
+]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+files = ["packages/tracebloom/src"]
+exclude = ["packages/dashboard"]
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false

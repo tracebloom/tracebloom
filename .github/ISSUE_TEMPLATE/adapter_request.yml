@@ -1,0 +1,36 @@
+name: Adapter request
+description: Request (or offer) an adapter for a new agent framework.
+title: "[adapter] "
+labels: ["adapter", "needs-triage"]
+body:
+  - type: input
+    id: framework
+    attributes:
+      label: Framework name and version
+      placeholder: "LangChain 0.3 / LlamaIndex 0.11 / CrewAI 0.80"
+    validations:
+      required: true
+  - type: input
+    id: docs
+    attributes:
+      label: Framework documentation link
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: Who uses this framework? What does tracebloom unlock for them?
+    validations:
+      required: true
+  - type: dropdown
+    id: contribute
+    attributes:
+      label: Willing to contribute?
+      options:
+        - "Yes — I'll open the PR"
+        - "Yes — I can pair with a maintainer"
+        - "No — request only"
+    validations:
+      required: true

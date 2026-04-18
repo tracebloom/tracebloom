@@ -1,0 +1,52 @@
+name: dashboard-ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    name: build (node 20 / ubuntu)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/dashboard
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install deps
+        working-directory: .
+        run: pnpm install --frozen-lockfile=false
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build dashboard
+        run: pnpm build
+
+      - name: Build single-file viewer
+        run: pnpm build:viewer
+
+      - name: Enforce viewer size budget (< 200KB)
+        run: |
+          SIZE=$(wc -c < dist/viewer/viewer.html)
+          echo "viewer.html: $SIZE bytes"
+          if [ "$SIZE" -ge 200000 ]; then
+            echo "::error::viewer.html exceeds 200KB budget ($SIZE bytes)"
+            exit 1
+          fi

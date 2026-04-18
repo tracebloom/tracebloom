@@ -1,0 +1,73 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tracebloom"
+version = "0.0.1"
+description = "A debugger for AI agents: flame-graph decision traces, deterministic replay, memory/skill inspector, drift detection."
+readme = "README.md"
+license = { file = "../../LICENSE" }
+requires-python = ">=3.10"
+authors = [
+  { name = "tracebloom contributors" },
+]
+keywords = ["ai-agents", "observability", "opentelemetry", "genai", "tracing", "debugging"]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Debuggers",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: System :: Monitoring",
+]
+dependencies = [
+  "click>=8.1",
+  "opentelemetry-api>=1.27",
+  "opentelemetry-sdk>=1.27",
+  "opentelemetry-semantic-conventions>=0.48b0",
+  "httpx>=0.27",
+  "pydantic>=2.0",
+  "sqlmodel>=0.0.22",
+  "fastapi>=0.115",
+  "textual>=0.80",
+]
+
+[project.urls]
+Homepage = "https://github.com/tracebloom/tracebloom"
+Repository = "https://github.com/tracebloom/tracebloom"
+Issues = "https://github.com/tracebloom/tracebloom/issues"
+Changelog = "https://github.com/tracebloom/tracebloom/blob/main/CHANGELOG.md"
+
+[project.scripts]
+tracebloom = "tracebloom.cli:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3",
+  "ruff>=0.8",
+  "mypy>=1.13",
+  "pre-commit>=4.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tracebloom"]
+force-include = { "src/tracebloom/static" = "tracebloom/static" }
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src/tracebloom",
+  "tests",
+  "README.md",
+  "pyproject.toml",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"

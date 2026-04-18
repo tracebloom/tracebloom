@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussions
+    url: https://github.com/tracebloom/tracebloom/discussions
+    about: Ask questions, share ideas, show off your agent.
+  - name: Discord
+    url: "" # TODO: Discord invite URL
+    about: Chat with maintainers and other users.

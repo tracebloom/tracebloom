@@ -1,0 +1,34 @@
+name: Feature request
+description: Propose a change. Short, concrete proposals get read first.
+title: "[feature] "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What's the user-facing problem? Not the solution — the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+  - type: checkboxes
+    id: pillars
+    attributes:
+      label: v1.0 pillars affected
+      options:
+        - label: Flame-graph decision traces
+        - label: Deterministic replay
+        - label: Memory & skill inspector
+        - label: Drift detection
+        - label: None — meta / infra / docs

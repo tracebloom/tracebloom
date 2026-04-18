@@ -1,0 +1,17 @@
+{
+  "name": "tracebloom-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "tracebloom monorepo root",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dashboard:dev": "pnpm --filter @tracebloom/dashboard dev",
+    "dashboard:build": "pnpm --filter @tracebloom/dashboard build",
+    "viewer:build": "pnpm --filter @tracebloom/dashboard build:viewer",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint"
+  }
+}

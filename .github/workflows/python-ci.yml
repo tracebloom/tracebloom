@@ -1,0 +1,51 @@
+name: python-ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: test (py${{ matrix.python-version }} / ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # On main: full matrix. On PRs: py3.10 + py3.12 on ubuntu only.
+        os: ${{ github.event_name == 'push' && fromJSON('["ubuntu-latest", "macos-latest"]') || fromJSON('["ubuntu-latest"]') }}
+        python-version: ${{ github.event_name == 'push' && fromJSON('["3.10", "3.11", "3.12", "3.13"]') || fromJSON('["3.10", "3.12"]') }}
+
+    defaults:
+      run:
+        working-directory: packages/tracebloom
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+
+      - name: Set up Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
+
+      - name: Install deps
+        working-directory: .
+        run: uv sync --python ${{ matrix.python-version }}
+
+      - name: Ruff
+        working-directory: .
+        run: uv run ruff check packages/tracebloom
+
+      - name: Ruff format check
+        working-directory: .
+        run: uv run ruff format --check packages/tracebloom
+
+      - name: Mypy
+        working-directory: .
+        run: uv run mypy
+
+      - name: Pytest
+        run: uv run pytest -v
