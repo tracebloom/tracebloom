@@ -29,7 +29,7 @@
 
 ## Phase 1 follow-ups
 
-- [ ] Discord invite URL: replace server ID in README.md badge URL and the link target once the server is created. Also replace the `<!-- TODO: Discord invite URL -->` placeholder in `.github/ISSUE_TEMPLATE/config.yml`.
+- [x] Discord invite URL: replace server ID in README.md badge URL and the link target once the server is created. Also replace the `<!-- TODO: Discord invite URL -->` placeholder in `.github/ISSUE_TEMPLATE/config.yml`.
 - [ ] Replace `[INSERT CONTACT METHOD]` in `CODE_OF_CONDUCT.md` with a real reporting address.
 - [ ] Record hero GIF for README (`demo.gif`, 1200x675, <5MB). Spec in `docs/assets/README.md`.
 - [ ] Known tool-harness issue: `spawn /bin/sh ENOENT` sometimes emitted by a stop-hook during scaffolding. Non-blocking; log here if it recurs.

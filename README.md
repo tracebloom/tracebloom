@@ -4,8 +4,7 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/tracebloom.svg)](https://pypi.org/project/tracebloom/)
 [![License](https://img.shields.io/github/license/tracebloom/tracebloom.svg)](./LICENSE)
 [![CI](https://github.com/tracebloom/tracebloom/actions/workflows/python-ci.yml/badge.svg)](https://github.com/tracebloom/tracebloom/actions)
-<!-- TODO: Discord invite URL — replace both the server ID in the badge URL and the link target before launch. Tracked in ROADMAP.md Phase 1 follow-ups. -->
-[![Discord](https://img.shields.io/discord/0?label=discord&logo=discord&color=5865F2&style=flat)](https://tracebloom.dev)
+[![Discord](https://img.shields.io/discord/1494861746211651754?label=discord&logo=discord&color=5865F2&style=flat)](https://discord.gg/YxMkUSDw)
 [![GitHub stars](https://img.shields.io/github/stars/tracebloom/tracebloom.svg?style=social)](https://github.com/tracebloom/tracebloom/stargazers)
 
 > ⚠️ **This project is under active development and not yet ready for use.** v0.1.0 ships when Phase 2 completes. Watch the repo to be notified.
@@ -55,7 +54,7 @@ That's it. Open the viewer, see the flame graph, find the bad decision.
 ## Community
 
 - **Discussions:** https://github.com/tracebloom/tracebloom/discussions
-- **Discord:** <!-- TODO: Discord invite URL -->
+- **Discord:** https://discord.gg/YxMkUSDw
 - **Issues:** https://github.com/tracebloom/tracebloom/issues
 
 ## License
