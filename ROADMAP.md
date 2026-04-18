@@ -1,5 +1,15 @@
 # Roadmap
 
+## Phase progress
+
+### Phase 1b — Documentation
+
+**Session 1: docs/span-attributes.md** — closed 2026-04-18. Commit 4cf18e2. OpenTelemetry GenAI-aligned span attribute contract for v0.1.0. Four extension namespaces (memory, skill, replay+branch, decision). 504 lines, ~30 attributes, one canonical worked example.
+
+**Session 2: docs/api.md** — kicking off.
+
+**Session 3: docs/wireframes.md** — pending.
+
 ## v1.0 pillars (six-month build)
 
 1. **Flame-graph decision traces.** Every tool call, prompt turn, and memory op rendered as a zoomable flame graph. OpenTelemetry GenAI semconv on the wire.
