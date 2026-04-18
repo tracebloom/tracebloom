@@ -33,6 +33,7 @@
 - [ ] Replace `[INSERT CONTACT METHOD]` in `CODE_OF_CONDUCT.md` with a real reporting address.
 - [ ] Record hero GIF for README (`demo.gif`, 1200x675, <5MB). Spec in `docs/assets/README.md`.
 - [ ] Known tool-harness issue: `spawn /bin/sh ENOENT` sometimes emitted by a stop-hook during scaffolding. Non-blocking; log here if it recurs.
+- [ ] Migrate GitHub Actions off Node 20 before June 2026 deprecation (actions/checkout, pnpm/action-setup, actions/setup-node, actions/setup-python).
 
 ## Phase 2 blockers
 
