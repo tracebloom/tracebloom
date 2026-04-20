@@ -44,7 +44,7 @@ These decisions are final for v1.0. Do not propose alternatives. If you believe 
 ## Documentation format conventions
 
 - All markdown tables use ASCII pipe-and-dash format: `|` (U+007C) and `-` (U+002D). Never Unicode box-drawing characters (`┌┬┐├┼┤└┴┘│─`). Even though box-drawing renders attractively in some terminals, it renders as literal characters on GitHub and breaks in most markdown tooling.
-- All code blocks are triple-backtick fenced with a language tag (```json, ```python, ```bash, etc.). Never indented blocks.
+- All code blocks are triple-backtick fenced. Never indented blocks. A language tag SHOULD be included when a conventional one exists (```json, ```python, ```bash, ```http, etc.). When no conventional tag exists (e.g., raw SSE event framing, custom protocol snippets), an untagged fence is acceptable rather than inventing a tag.
 - When a reviewer critiques a format issue, Claude Code MUST verify the critique against the actual artifact characters before fixing. If the critique doesn't match the artifact (e.g., reviewer claims box-drawing, artifact has ASCII pipes), push back with evidence rather than silently "fixing" a non-issue. Performing a fix that isn't needed teaches both sides worse habits.
 - When emitting a draft containing markdown tables, the self-audit MUST include a byte-level verification of one representative separator row — echo the row literally and annotate its character codes (e.g., "|---|---|---| → 0x7C pipes, 0x2D hyphens, no U+2500–U+257F box-drawing"). This is the cheapest way to prevent ambiguity when rendering clients display ASCII tables with styled borders that visually resemble box-drawing.
 
